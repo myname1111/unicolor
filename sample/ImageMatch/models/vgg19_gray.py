@@ -126,7 +126,7 @@ model = nn.Sequential(  # Sequential,
 )
 
 current_path = os.path.dirname(os.path.realpath(__file__))
-model.load_state_dict(torch.load(os.path.join(current_path, os.path.pardir, 'data', 'vgg19_gray.pth')))
+model.load_state_dict(torch.load(os.path.join(os.path.relpath(current_path), 'data', 'vgg19_gray.pth')))
 vgg19_gray_net = torch.nn.Sequential()
 for (name, layer) in model._modules.items():
     vgg19_gray_net.add_module(layer_names[int(name)], model[int(name)])
